@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LWKlearning | Blog Archive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #0d1117;
             --text-color: #c9d1d9;
             --accent-green: #238636;
             --fade-speed: 1.2s;
+            --yt-red: #ff0000;
         }
 
         body {
@@ -23,13 +25,31 @@
             align-items: center;
         }
 
-        h1 {
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             max-width: 900px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0;
             font-weight: 600;
             letter-spacing: 1px;
+        }
+
+        .yt-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .yt-link:hover {
+            color: var(--yt-red);
         }
 
         .section {
@@ -83,9 +103,14 @@
 </head>
 <body>
 
-    <h1>What i been up to lately</h1>
+    <div class="header-container">
+        <h1>What i been up to lately</h1>
+        <a href="https://youtube.com/@byte312" target="_blank" class="yt-link" title="YouTube Channel">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+    </div>
 
-        <div class="section">
+    <div class="section">
         <div class="media-container">
             <img src="https://raw.githubusercontent.com/LWKlearning/blog/refs/heads/main/print.jpg" alt="Cinematic Render">
         </div>
@@ -93,7 +118,7 @@
             <h2>06 / funny guy and cass</h2>
             <p>hey, its 3:00am and i made a funny guy and case for my phone.</p>
         </div>
-        </div>
+    </div>
 
     <div class="section">
         <div class="media-container">
@@ -101,7 +126,7 @@
         </div>
         <div class="description">
             <h2>05 / phone</h2>
-            <p>i designed this "phone" and assembled it from start to finish., it uses chromeos and plays roblox at 60fps. i honestly consider it as a brick. that gray thing behind it is a "rabbit"</p>
+            <p>i designed this "phone" and assembled it from start to finish. it uses chromeos and plays roblox at 60fps. i honestly consider it as a brick. that gray thing behind it is a "rabbit"</p>
         </div>
     </div>
     
@@ -115,15 +140,13 @@
         </div>
     </div>
 
-
-
     <div class="section">
         <div class="media-container" style="text-align: center;">
             <img id="talking-indicator" src="https://raw.githubusercontent.com/LWKlearning/blog/refs/heads/main/talking indicator.png" alt="Reactive Overlay">
         </div>
         <div class="description">
             <h2>03 / talking indicator</h2>
-            <p>my talking indocator for streaming, you can see it in action at my channel.</p>
+            <p>my talking indicator for streaming, you can see it in action at my channel.</p>
         </div>
     </div>
 
@@ -137,7 +160,7 @@
         </div>
     </div>
 
-        <div class="section">
+    <div class="section">
         <div class="media-container">
             <img src="https://raw.githubusercontent.com/LWKlearning/blog/refs/heads/main/glower.jpg" alt="Viewport Analysis">
         </div>
@@ -145,7 +168,7 @@
             <h2>01 / guy</h2>
             <p>opened blender and made this diva. hes gonna be everywhere on this page.</p>
         </div>
-        </div>
+    </div>
     
     <script>
         // Fade-in Animation Logic
@@ -159,8 +182,15 @@
         sections.forEach(section => observer.observe(section));
 
         // Talking Indicator Toggle Logic (0.05s)
-        
+        const indicator = document.getElementById('talking-indicator');
+        const path = "https://raw.githubusercontent.com/LWKlearning/blog/refs/heads/main/";
+        const frames = [path + "talking indicator.png", path + "talking indicator 2.png"];
+        let currentFrame = 0;
+
+        setInterval(() => {
+            currentFrame = (currentFrame + 1) % frames.length;
+            indicator.src = frames[currentFrame];
+        }, 50);
     </script>
 </body>
 </html>
-
