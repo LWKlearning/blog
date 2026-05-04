@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LWKlearning | Blog Archive</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --accent-green: #238636;
+            --fade-speed: 1.2s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            width: 100%;
+            max-width: 900px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            max-width: 900px;
+            margin: 60px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--fade-speed) ease-out, transform var(--fade-speed) ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .media-container {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .media-container img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border: 1px solid #30363d;
+        }
+
+        .description {
+            flex: 1;
+        }
+
+        .description h2 {
+            color: #58a6ff;
+            margin-top: 0;
+        }
+
+        .description p {
+            line-height: 1.6;
+            color: #8b949e;
+        }
+
+        #talking-indicator {
+            width: 150px;
+            height: auto;
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PRODUCTION LOGS // 2026</h1>
+
+    <div class="section">
+        <div class="media-container">
+            <img src="fortnitethumbnail.jpg" alt="Cinematic Render">
+        </div>
+        <div class="description">
+            <h2>01 / Cinematic Composition</h2>
+            <p>Advanced 3D environment construction within Blender. This asset utilizes custom-rigged avatars, volumetric explosion physics, and high-intensity spotlighting to create a production-grade stream thumbnail.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="media-container">
+            <img src="epikrender.jpg" alt="Viewport Analysis">
+        </div>
+        <div class="description">
+            <h2>02 / System Architecture</h2>
+            <p>Analysis of depth-of-field and emissive texture mapping. This render explores the "System Error" aesthetic, utilizing high-contrast geometry and neon light paths to define a virtual void environment.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="media-container" style="text-align: center;">
+            <img id="talking-indicator" src="talkingindicator.png" alt="Reactive Overlay">
+        </div>
+        <div class="description">
+            <h2>03 / Reactive Signal Logic</h2>
+            <p>A custom-scripted broadcast overlay. The asset toggles between idle and active states at a 0.05s frequency to simulate a CRT flicker effect, providing visual feedback for live vocal input.</p>
+        </div>
+    </div>
+
+    <script>
+        // Fade-in Animation Logic
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Talking Indicator Toggle Logic (0.05s)
+        const indicator = document.getElementById('talking-indicator');
+        const frames = ['talkingindicator.png', 'talkingindicator2.png'];
+        let currentFrame = 0;
+
+        setInterval(() => {
+            currentFrame = (currentFrame + 1) % frames.length;
+            indicator.src = frames[currentFrame];
+        }, 50); // 0.05s
+    </script>
+</body>
+</html>
+
