@@ -127,14 +127,7 @@
         sections.forEach(section => observer.observe(section));
 
         // Talking Indicator Toggle Logic (0.05s)
-        const indicator = document.getElementById('talking-indicator');
-        const frames = ['talking indicator.png', 'talkingindicator2.png'];
-        let currentFrame = 0;
-
-        setInterval(() => {
-            currentFrame = (currentFrame + 1) % frames.length;
-            indicator.src = frames[currentFrame];
-        }, 50); // 0.05s
+        
     </script>
 </body>
 </html>
