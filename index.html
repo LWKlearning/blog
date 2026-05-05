@@ -112,6 +112,17 @@
 
     <div class="section">
         <div class="media-container">
+            <img src="https://raw.githubusercontent.com/LWKlearning/blog/refs/heads/main/didntfit.jpg" alt="Cinematic Render">
+        </div>
+        <div class="description">
+            <h2>07 / cass didnt fit</h2>
+            <p>hey, its 7:00pm, and it turns out the thing literally just doesnt fit
+             gonna redesign it.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="media-container">
             <img src="https://raw.githubusercontent.com/LWKlearning/blog/refs/heads/main/print.jpg" alt="Cinematic Render">
         </div>
         <div class="description">
@@ -181,16 +192,6 @@
 
         sections.forEach(section => observer.observe(section));
 
-        // Talking Indicator Toggle Logic (0.05s)
-        const indicator = document.getElementById('talking-indicator');
-        const path = "https://raw.githubusercontent.com/LWKlearning/blog/refs/heads/main/";
-        const frames = [path + "talking indicator.png", path + "talking indicator 2.png"];
-        let currentFrame = 0;
-
-        setInterval(() => {
-            currentFrame = (currentFrame + 1) % frames.length;
-            indicator.src = frames[currentFrame];
-        }, 50);
     </script>
 </body>
 </html>
